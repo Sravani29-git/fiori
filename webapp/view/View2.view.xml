@@ -1,0 +1,82 @@
+<mvc:View
+    controllerName="fragment.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page title="Employee Information" >
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                class="sapUiTinyMargin"
+                singleContainerFullSize="true">
+
+        <HBox alignItems="Stretch" class="sapUiTinyMarginBottom">
+    <core:Icon src="sap-icon://employee" class="sapUiTinyMarginEnd"/>
+    <Title text="Employee Details" level="H3"/>
+</HBox>
+
+                <Label text="Edit Employee:"/>
+                <Switch state="{empModel>/active}" change="onMainToggle"/>
+
+                <Label text="Employee ID:"/>
+                <Input value="{empModel>/id}" editable="false"/>
+
+                <Label text="Name:"/>
+                <Input value="{empModel>/name}" editable="{empModel>/active}"/>
+
+                <Label text="Email:"/>
+                <Input value="{empModel>/email}" editable="{empModel>/active}"/>
+
+                <Label text="Rating:"/>
+                <Input value="{empModel>/rating}" editable="{empModel>/active}"/>
+
+                <Label text="Age Category:"/>
+                <Text text="{= ${empModel>/age} >= 18 ? 'Major' : 'Minor' }"/>
+
+                <Label text="Created Date:"/>
+                <Text text="{= ${empModel>/createdAt}.split('T')[0] }"/>
+
+                <Label text="Address:"/>
+                <Link text="Show Address" press="onOpenAddress"/>
+
+                <Label text="Edit Projects:"/>
+                <Switch state="{ui>/skillEdit}" change="onSkillToggle" editable="{empModel>/active}"/>
+
+                <!-- Skills Table -->
+                <Label text=""/>
+                <Table
+                    items="{empModel>/skills}"
+                    mode="SingleSelectMaster"
+                    selectionChange="onSkillPress">
+
+                    <columns>
+                        <Column>
+                            <Text text="Skill"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem type="Active">
+                            <cells>
+                                <HBox alignItems="Center">
+                                    <Avatar
+                                        src="{empModel>icon}"
+                                        backgroundColor="{empModel>avatarColor}"
+                                        displayShape="Circle"
+                                        class="sapUiTinyMarginEnd"/>
+                                    <Text text="{empModel>skillName}"/>
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+
+                </Table>
+
+            </f:SimpleForm>
+
+        </content>
+    </Page>
+</mvc:View>

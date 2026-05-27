@@ -1,0 +1,233 @@
+{
+  "_version": "1.83.0",
+  "sap.app": {
+    "id": "fragment",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.22.0",
+      "toolsId": "235bea93-632a-4d42-9b56-6a2cb1c7d7ce"
+    },
+    "dataSources": {}
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.147.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ui.table": {},
+        "sap.ui.comp": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "fragment.i18n.i18n"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "fragment.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": "",
+          "target": "TargetView1"
+        },
+        {
+          "name": "RouteView2",
+          "pattern": "View2",
+          "target": "TargetView2"
+        },
+        {
+          "name": "RouteView3",
+          "pattern": "View3",
+          "target": "TargetView3"
+        },
+        {
+          "name": "RouteView4",
+          "pattern": "View4",
+          "target": "TargetView4"
+        },
+        {
+          "name": "RouteView5",
+          "pattern": "View5",
+          "target": "TargetView5"
+        },
+        {
+          "name": "RouteView6",
+          "pattern": "View6",
+          "target": "TargetView6"
+        },
+        {
+          "name": "RouteView7",
+          "pattern": "View7",
+          "target": "TargetView7"
+        },
+        {
+          "name": "RouteView8",
+          "pattern": "View8",
+          "target": "TargetView8"
+        },
+        {
+          "name": "RouteView9",
+          "pattern": "View9",
+          "target": "TargetView9"
+        },
+        {
+          "name": "RouteView10",
+          "pattern": "View10",
+          "target": "TargetView10"
+        },
+        {
+          "name": "RouteView11",
+          "pattern": "View11",
+          "target": "TargetView11"
+        },
+        {
+          "name": "RouteView12",
+          "pattern": "View12",
+          "target": "TargetView12"
+        },
+        {
+          "name": "RouteView13",
+          "pattern": "View13",
+          "target": "TargetView13"
+        },
+        {
+          "name": "RouteView14",
+          "pattern": "View14",
+          "target": "TargetView14"
+        },
+        {
+          "name": "RouteView15",
+          "pattern": "View15",
+          "target": "TargetView15"
+        },
+        {
+          "name": "RouteView16",
+          "pattern": "View16/{empId}",
+          "target": "TargetView16"
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        },
+        "TargetView2": {
+          "id": "View2",
+          "name": "View2"
+        },
+        "TargetView3": {
+          "id": "View3",
+          "name": "View3"
+        },
+        "TargetView4": {
+          "id": "View4",
+          "name": "View4"
+        },
+        "TargetView5": {
+          "id": "View5",
+          "name": "View5"
+        },
+        "TargetView6": {
+          "id": "View6",
+          "name": "View6"
+        },
+        "TargetView7": {
+          "id": "View7",
+          "name": "View7"
+        },
+        "TargetView8": {
+          "id": "View8",
+          "name": "View8"
+        },
+        "TargetView9": {
+          "id": "View9",
+          "name": "View9"
+        },
+        "TargetView10": {
+          "id": "View10",
+          "name": "View10"
+        },
+        "TargetView11": {
+          "id": "View11",
+          "name": "View11"
+        },
+        "TargetView12": {
+          "id": "View12",
+          "name": "View12"
+        },
+        "TargetView13": {
+          "id": "View13",
+          "name": "View13"
+        },
+        "TargetView14": {
+          "id": "View14",
+          "name": "View14"
+        },
+        "TargetView15": {
+          "id": "View15",
+          "name": "View15"
+        },
+        "TargetView16": {
+          "id": "View16",
+          "name": "View16"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "fragment.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

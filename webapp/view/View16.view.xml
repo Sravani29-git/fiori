@@ -1,0 +1,33 @@
+<mvc:View
+    controllerName="fragment.controller.View16"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Page title="Employee Detail" showNavButton="true" navButtonPress="onBack">
+
+        <content>
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+                class="sapUiMediumMargin">
+
+                <f:content>
+                    <Label text="Employee ID"/>
+                    <Text text="{detailModel>/empId}"/>
+
+                    <Label text="Employee Name"/>
+                    <Text text="{detailModel>/name}"/>
+
+                    <Label text="Department"/>
+                    <Text text="{detailModel>/department}"/>
+
+                    <Label text="Salary"/>
+                    <Text text="{detailModel>/salary}"/>
+                </f:content>
+
+            </f:SimpleForm>
+        </content>
+
+    </Page>
+</mvc:View>

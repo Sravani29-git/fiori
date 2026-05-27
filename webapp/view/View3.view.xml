@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="fragment.controller.View3"
+xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+
+    <Page showHeader="false"  backgroundDesign="Standard">
+        <content>
+
+            <VBox width="100%" class="sapUiMediumMarginTop">
+
+            
+                <HBox justifyContent="Center" width="100%">
+                    <VBox width="1000px">
+
+                        <!-- Row 1 -->
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Label text="Company Code:*" width="220px" design="Bold" class="sapUiTinyMarginEnd"/>
+                            
+                            <Input
+                                value="PA63"
+                                width="280px"
+                                showValueHelp="true"
+                                class="sapUiTinyMarginEnd"/>
+
+                            <Text
+                                text="CHEP Pallecon Solutions Pty Ltd-New Zealand"
+                                class="sapUiSmallMarginBegin"/>
+                        </HBox>
+
+                        <!-- Row 2 -->
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Label text="Supplier Number:*" width="220px" design="Bold" class="sapUiTinyMarginEnd"/>
+                            
+                            <Input
+                                value="AUSS900"
+                                width="280px"
+                                showValueHelp="true"
+                                class="sapUiTinyMarginEnd"/>
+
+                            <Text
+                                text="AUSSIE WHOLESALE MEATS**DNU**"
+                                class="sapUiSmallMarginBegin"/>
+                        </HBox>
+
+                        <!-- Row 3 -->
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Label text="Invoice Type:*" width="220px" design="Bold" class="sapUiTinyMarginEnd"/>
+                            
+                            <Input
+                                value="E"
+                                width="280px"
+                                showValueHelp="true"
+                                class="sapUiTinyMarginEnd"/>
+
+                            <Text
+                                text="Inter Company Invoice"
+                                class="sapUiSmallMarginBegin"/>
+                        </HBox>
+
+                        <!-- Row 4 -->
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Label text="Date Range:" width="220px" design="Bold" class="sapUiTinyMarginEnd"/>
+
+                            <Select width="280px" class="sapUiTinyMarginEnd">
+                                <items>
+                                    <core:Item key="" text=""/>
+                                    <core:Item key="today" text="Today"/>
+                                    <core:Item key="week" text="This Week"/>
+                                    <core:Item key="month" text="This Month"/>
+                                    <core:Item key="custom" text="Custom"/>
+                                </items>
+                            </Select>
+
+                            <DatePicker
+                                width="360px"
+                                placeholder="Enter Date"/>
+                        </HBox>
+
+                        <!-- Row 5 -->
+                        <HBox alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Label text="Other Search Criteria:" width="220px" design="Bold" class="sapUiTinyMarginEnd"/>
+
+                            <Select width="280px" class="sapUiTinyMarginEnd">
+                                <items>
+                           
+                                    <core:Item key="" text=""/>
+                                    <core:Item key="invno" text="Invoice Number"/>
+                                    <core:Item key="pono" text="PO Number"/>
+                                    <core:Item key="ref" text="Reference"/>
+                                </items>
+                            </Select>
+
+                            <Select width="110px" class="sapUiTinyMarginEnd">
+                                <items>
+                                    <core:Item key="" text=""/>
+                                    <core:Item key="eq" text="="/>
+                                    <core:Item key="contains" text="Contains"/>
+                                    <core:Item key="starts" text="Starts With"/>
+                                </items>
+                            </Select>
+
+                            <Input width="230px"/>
+                        </HBox>
+
+                    </VBox>
+                </HBox>
+
+                <!-- Buttons -->
+                <HBox justifyContent="Center" class="sapUiMediumMarginTop sapUiMediumMarginBottom">
+                    <Button
+                        text="Search"
+                        type="Emphasized"
+                        icon="sap-icon://search"
+                        press="onSearch"
+                        class="sapUiTinyMarginEnd"/>
+
+                    <Button
+                        text="Clear"
+                        type="Emphasized"
+                        icon="sap-icon://sys-cancel"
+                        press="onClear"/>
+                </HBox>
+
+                <Toolbar height="1px" design="Transparent">
+                    <content>
+                        <ToolbarSpacer/>
+                    </content>
+                </Toolbar>
+
+            </VBox>
+
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,57 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog
+        title="Line Item 2 - Form Data"
+        contentWidth="600px"
+        draggable="true"
+        resizable="true">
+
+        <content>
+            <f:SimpleForm
+                editable="true"
+                layout="ResponsiveGridLayout"
+                labelSpanL="4"
+                labelSpanM="4"
+                columnsL="1"
+                columnsM="1"
+                class="sapUiSmallMargin">
+
+                <f:content>
+                    <Label text="Line Item No"/>
+                    <Input value="{contractModel>/lineForm/lineItemNo}"/>
+
+                    <Label text="Item Category"/>
+                    <Input value="{contractModel>/lineForm/itemCategory}"/>
+
+                    <Label text="Plant"/>
+                    <Input value="{contractModel>/lineForm/plant}"/>
+
+                    <Label text="Storage Location"/>
+                    <Input value="{contractModel>/lineForm/storageLocation}"/>
+
+                    <Label text="Delivery Date"/>
+                    <DatePicker value="{contractModel>/lineForm/deliveryDate}"/>
+
+                    <Label text="Net Value"/>
+                    <Input value="{contractModel>/lineForm/netValue}"/>
+
+                    <Label text="Remarks"/>
+                    <TextArea value="{contractModel>/lineForm/remarks}" rows="3"/>
+                </f:content>
+
+            </f:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button text="Save" type="Accept" press="onSaveLineForm"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="Close" type="Reject" press="onCloseFormDialog"/>
+        </endButton>
+
+    </Dialog>
+</core:FragmentDefinition>

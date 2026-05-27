@@ -1,0 +1,137 @@
+<mvc:View
+    controllerName="fragment.controller.View14"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
+    <Page title="Employee Project Allocation">
+
+        <content>
+            <VBox class="sapUiMediumMargin">
+
+                <Panel headerText="Project Allocation Form" class="sapUiResponsiveMargin" width="auto">
+
+                    <f:SimpleForm
+                        editable="{uiModel>/editable}"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="1">
+
+                        <f:content>
+
+                            <Label text="Employee ID" required="true"/>
+                            <Input
+                                id="empId"
+                                value="{formModel>/empId}"
+                                editable="{uiModel>/editable}"
+                                placeholder="Enter Employee ID"/>
+
+                            <Label text="Employee Name" required="true"/>
+                            <Input
+                                id="empName"
+                                value="{formModel>/empName}"
+                                editable="{uiModel>/editable}"
+                                placeholder="Enter Employee Name"/>
+
+                            <Label text="Department" required="true"/>
+                            <Select
+                                id="deptSelect"
+                                selectedKey="{formModel>/department}"
+                                enabled="{uiModel>/editable}"
+                                change="onDepartmentChange"
+                                items="{dataModel>/departments}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </Select>
+
+                            <Label text="Project" required="true"/>
+                            <ComboBox
+                                id="projectCombo"
+                                selectedKey="{formModel>/project}"
+                                value="{formModel>/projectText}"
+                                editable="{uiModel>/editable}"
+                                placeholder="Select or type project"
+                                items="{dataModel>/filteredProjects}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </ComboBox>
+
+                            <Label text="Skills"/>
+                            <MultiComboBox
+                                id="skillsMultiCombo"
+                                selectedKeys="{formModel>/skills}"
+                                editable="{uiModel>/editable}"
+                                selectionChange="onSkillsChange"
+                                items="{dataModel>/skills}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </MultiComboBox>
+
+                            <Label text="Skills Count"/>
+                            <Text text="{uiModel>/skillsCountText}"/>
+
+                            <Label text="Work Location"/>
+                            <Select
+                                selectedKey="{formModel>/location}"
+                                enabled="{uiModel>/editable}"
+                                items="{dataModel>/locations}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </Select>
+
+                            <Label text="Preferred Shift"/>
+                            <ComboBox
+                                selectedKey="{formModel>/shift}"
+                                value="{formModel>/shiftText}"
+                                editable="{uiModel>/editable}"
+                                placeholder="Select shift"
+                                items="{dataModel>/shifts}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </ComboBox>
+
+                            <Label text="Certifications"/>
+                            <MultiComboBox
+                                selectedKeys="{formModel>/certifications}"
+                                editable="{uiModel>/editable}"
+                                items="{dataModel>/certifications}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </MultiComboBox>
+
+                            <Label text="Status"/>
+                            <Select
+                                selectedKey="{formModel>/status}"
+                                enabled="{uiModel>/editable}"
+                                items="{dataModel>/statusList}">
+                                <core:Item key="{dataModel>key}" text="{dataModel>text}"/>
+                            </Select>
+
+                            <Label text="Remarks"/>
+                            <TextArea
+                                value="{formModel>/remarks}"
+                                editable="{uiModel>/editable}"
+                                rows="3"
+                                placeholder="Enter remarks"/>
+
+                        </f:content>
+                    </f:SimpleForm>
+                </Panel>
+
+            </VBox>
+        </content>
+
+        <footer>
+            <OverflowToolbar>
+                <Label text="Edit Mode"/>
+                <Switch state="{uiModel>/editable}" change="onEditModeChange"/>
+
+                <ToolbarSpacer/>
+
+                <Button text="Save" type="Emphasized" icon="sap-icon://save" press="onSave"/>
+                <Button text="Clear" type="Reject" icon="sap-icon://clear-filter" press="onClear"/>
+            </OverflowToolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

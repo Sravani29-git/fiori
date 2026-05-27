@@ -1,0 +1,108 @@
+<mvc:View
+    controllerName="fragment.controller.View11"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="View 11">
+
+        <content>
+
+            <List id="idList">
+
+                <!-- DISPLAY LIST ITEM -->
+                <DisplayListItem
+                    label="Turmeric"
+                    value="Best antibiotic on planet" />
+
+                <!-- STANDARD LIST ITEM -->
+              <!-- BANANA -->
+<StandardListItem
+    title="Strawberry"
+    description="Best source of potassium"
+    icon="https://cdn-icons-png.flaticon.com/512/590/590685.png"
+    iconDensityAware="false"
+    iconInset="false" />
+
+                <!-- INPUT LIST ITEM -->
+                <InputListItem>
+
+                    <content>
+
+                        <HBox alignItems="Center">
+
+                            <Text text="Which fruit is best for skin?" />
+
+                            <Input
+                                width="150px"
+                                class="sapUiSmallMarginBegin" />
+
+                        </HBox>
+
+                    </content>
+
+                </InputListItem>
+
+                <!-- CUSTOM LIST ITEM -->
+                <CustomListItem>
+
+                    <content>
+
+                        <SegmentedButton width="100%">
+
+                            <items>
+
+                                <SegmentedButtonItem text="Seasonal" />
+                                <SegmentedButtonItem text="OffSeason" />
+                                <SegmentedButtonItem text="EverSeason" />
+
+                            </items>
+
+                        </SegmentedButton>
+
+                    </content>
+
+                </CustomListItem>
+
+                <!-- FEED LIST ITEM -->
+                <FeedListItem
+                    sender="Narendra Modi"
+                    text="Hello Sravani How it going!" />
+
+                <!-- OBJECT LIST ITEM -->
+                <ObjectListItem
+                    intro="Good for blood purification"
+                    title="Apple"
+                    number="150 INR"
+                    numberUnit="Per Kg"
+                    icon="https://cdn-icons-png.flaticon.com/512/415/415682.png">
+
+                    <attributes>
+
+                        <ObjectAttribute text="0.25 gm" />
+
+                        <ObjectAttribute text="Apples are best" />
+
+                    </attributes>
+
+                    <firstStatus>
+
+                        <ObjectStatus
+                            text="Available"
+                            state="Success" />
+
+                    </firstStatus>
+
+                </ObjectListItem>
+
+                <!-- ACTION LIST ITEM -->
+                <ActionListItem
+                    text="Order Now!"
+                    press="onOrderNow" />
+
+            </List>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

@@ -1,0 +1,282 @@
+<mvc:View
+    controllerName="fragment.controller.View13"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    displayBlock="true">
+
+    <Page title="HR Analytics Dashboard">
+        <content>
+            <VBox class="sapUiMediumMargin">
+
+                <!-- KPI CARDS -->
+                <HBox justifyContent="SpaceBetween" wrap="Wrap">
+                    <GenericTile header="Total Employees" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/totalEmployees}" icon="sap-icon://employee"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="Total Salary" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/totalSalary}" scale="INR"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="Average Salary" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/avgSalary}" scale="INR"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="Approved Leaves" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/approvedLeaves}" icon="sap-icon://accept"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="Pending Leaves" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/pendingLeaves}" icon="sap-icon://pending"/>
+                        </TileContent>
+                    </GenericTile>
+
+                    <GenericTile header="Rejected Leaves" class="sapUiTinyMargin">
+                        <TileContent>
+                            <NumericContent value="{dash>/kpi/rejectedLeaves}" icon="sap-icon://decline"/>
+                        </TileContent>
+                    </GenericTile>
+                </HBox>
+
+                <!-- FILTER BAR -->
+                <Panel headerText="Filters" class="sapUiMediumMarginTop">
+                    <HBox alignItems="Center" wrap="Wrap">
+
+                        <Label text="Department" class="sapUiSmallMarginEnd"/>
+                        <Select
+                            width="150px"
+                            selectedKey="{dash>/filters/department}"
+                            items="{dash>/departments}"
+                            change="onFilterChange">
+                            <core:Item key="{dash>key}" text="{dash>text}"/>
+                        </Select>
+
+                        <Label text="Leave Status" class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+                        <Select
+                            width="150px"
+                            selectedKey="{dash>/filters/status}"
+                            items="{dash>/statuses}"
+                            change="onFilterChange">
+                            <core:Item key="{dash>key}" text="{dash>text}"/>
+                        </Select>
+
+                        <Label text="Month" class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+                        <Select
+                            width="150px"
+                            selectedKey="{dash>/filters/month}"
+                            items="{dash>/months}"
+                            change="onFilterChange">
+                            <core:Item key="{dash>key}" text="{dash>text}"/>
+                        </Select>
+
+                        <Label text="Salary Range" class="sapUiSmallMarginBegin sapUiSmallMarginEnd"/>
+                        <Select
+                            width="180px"
+                            selectedKey="{dash>/filters/salaryRange}"
+                            items="{dash>/salaryRanges}"
+                            change="onFilterChange">
+                            <core:Item key="{dash>key}" text="{dash>text}"/>
+                        </Select>
+
+                        <SearchField
+                            width="220px"
+                            placeholder="Search employee"
+                            class="sapUiSmallMarginBegin"
+                            liveChange="onSearch"/>
+
+                        <Button
+                            text="Clear"
+                            icon="sap-icon://clear-filter"
+                            class="sapUiSmallMarginBegin"
+                            press="onClear"/>
+
+                        <Button
+                            text="Sort Salary"
+                            icon="sap-icon://sort-descending"
+                            class="sapUiSmallMarginBegin"
+                            press="onSortSalary"/>
+                    </HBox>
+                </Panel>
+
+                <!-- CHART ROW 1 -->
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+
+                    <VBox width="32%">
+                        <Title text="Department Wise Employee Count" level="H4"/>
+                        <viz:VizFrame id="idDeptChart" width="100%" height="300px" vizType="column">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/deptChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Department" value="{dash>Department}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Count" value="{dash>Count}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Department"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                    <VBox width="32%">
+                        <Title text="Leave Status Count" level="H4"/>
+                        <viz:VizFrame id="idLeaveChart" width="100%" height="300px" vizType="pie">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/leaveChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Status" value="{dash>Status}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Count" value="{dash>Count}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+                                <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                    <VBox width="32%">
+                        <Title text="Monthly Salary Expense" level="H4"/>
+                        <viz:VizFrame id="idSalaryChart" width="100%" height="300px" vizType="line">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/salaryChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Month" value="{dash>Month}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Salary" value="{dash>Salary}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Salary"/>
+                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Month"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                </HBox>
+
+                <!-- CHART ROW 2 -->
+                <HBox width="100%" justifyContent="SpaceBetween" class="sapUiMediumMarginTop">
+
+                    <VBox width="32%">
+                        <Title text="Department Wise Average Salary" level="H4"/>
+                        <viz:VizFrame id="idAvgSalaryChart" width="100%" height="300px" vizType="bar">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/avgSalaryChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Department" value="{dash>Department}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Average Salary" value="{dash>AverageSalary}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Average Salary"/>
+                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Department"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                    <VBox width="32%">
+                        <Title text="Month Wise Joining Count" level="H4"/>
+                        <viz:VizFrame id="idJoiningChart" width="100%" height="300px" vizType="donut">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/joiningChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Month" value="{dash>Month}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Count" value="{dash>Count}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+                                <viz.feeds:FeedItem uid="color" type="Dimension" values="Month"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                    <VBox width="32%">
+                        <Title text="Salary Distribution" level="H4"/>
+                        <viz:VizFrame id="idDistributionChart" width="100%" height="300px" vizType="stacked_column">
+                            <viz:dataset>
+                                <viz.data:FlattenedDataset data="{dash>/salaryDistChart}">
+                                    <viz.data:dimensions>
+                                        <viz.data:DimensionDefinition name="Department" value="{dash>Department}"/>
+                                        <viz.data:DimensionDefinition name="Range" value="{dash>Range}"/>
+                                    </viz.data:dimensions>
+                                    <viz.data:measures>
+                                        <viz.data:MeasureDefinition name="Count" value="{dash>Count}"/>
+                                    </viz.data:measures>
+                                </viz.data:FlattenedDataset>
+                            </viz:dataset>
+                            <viz:feeds>
+                                <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Count"/>
+                                <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Department"/>
+                                <viz.feeds:FeedItem uid="color" type="Dimension" values="Range"/>
+                            </viz:feeds>
+                        </viz:VizFrame>
+                    </VBox>
+
+                </HBox>
+
+                <!-- TABLE -->
+                <Panel headerText="Employee Details" class="sapUiMediumMarginTop">
+                    <Table items="{dash>/filteredEmployees}" growing="true" growingThreshold="10">
+                        <columns>
+                            <Column><Text text="Emp ID"/></Column>
+                            <Column><Text text="Name"/></Column>
+                            <Column><Text text="Department"/></Column>
+                            <Column><Text text="Designation"/></Column>
+                            <Column><Text text="Salary"/></Column>
+                            <Column><Text text="Leave"/></Column>
+                            <Column><Text text="Month"/></Column>
+                            <Column><Text text="Experience"/></Column>
+                            <Column><Text text="Location"/></Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{dash>EmpId}"/>
+                                    <Text text="{dash>Name}"/>
+                                    <Text text="{dash>Department}"/>
+                                    <Text text="{dash>Designation}"/>
+                                    <ObjectNumber number="{dash>Salary}" unit="INR"/>
+                                    <ObjectStatus text="{dash>LeaveStatus}"/>
+                                    <Text text="{dash>Month}"/>
+                                    <Text text="{dash>Experience}"/>
+                                    <Text text="{dash>Location}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </Panel>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

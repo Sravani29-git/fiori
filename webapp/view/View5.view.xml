@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="fragment.controller.View5"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Custom Formatter with Input Fields">
+        <content>
+            <VBox class="sapUiMediumMargin" width="350px">
+
+                <!-- Full Name -->
+                <Label text="Full Name"/>
+                <Input value="{
+                    parts: [
+                        {path: 'empModel>/firstName'},
+                        {path: 'empModel>/lastName'}
+                    ],
+                    formatter: '.formatter.getFullName'
+                }" editable="false"/>
+
+                <!-- Salary -->
+                <Label text="Salary"/>
+                <Input value="{path: 'empModel>/salary', formatter: '.formatter.formatSalary'}" editable="false"/>
+
+                <!-- Rating -->
+                <Label text="Rating"/>
+                <Input value="{path: 'empModel>/rating', formatter: '.formatter.formatRating'}" editable="false"/>
+
+                <!-- Status -->
+                <Label text="Status"/>
+                <Input value="{path: 'empModel>/isActive', formatter: '.formatter.formatStatus'}" editable="false"/>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

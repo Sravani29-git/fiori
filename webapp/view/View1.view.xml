@@ -1,0 +1,26 @@
+<mvc:View
+    controllerName="fragment.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Employee Screen">
+
+        <content>
+
+            <VBox
+                alignItems="Center"
+                justifyContent="Center"
+                height="100%">
+
+                <Button
+                    text="Show Employees"
+                    press="onOpenDialog"
+                    type="Emphasized"/>
+
+            </VBox>
+            <Button text="click to view2" press="onPress"></Button>
+        </content>
+
+    </Page>z
+
+</mvc:View>

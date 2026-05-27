@@ -1,0 +1,46 @@
+<mvc:View
+    controllerName="fragment.controller.View7"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Page title="Category Selection">
+
+        <content>
+            <VBox class="sapUiSmallMargin" width="60%">
+
+                <Label text="Category 1 dropdown"/>
+
+                <ComboBox
+                    id="combo"
+                    width="300px"
+                    items="{catModel>/categories}">
+                    <core:Item
+                        key="{catModel>key}"
+                        text="{catModel>name}" />
+                </ComboBox>
+
+                <Button
+                    text="Go"
+                    press="onGo"
+                    class="sapUiSmallMarginTop"/>
+
+                <TextArea
+                    value="{ui>/description}"
+                    width="700px"
+                    rows="2"
+                    editable="false"
+                    class="sapUiLargeMarginTop"/>
+
+            </VBox>
+        </content>
+
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button text="Clear" press="onClear"/>
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

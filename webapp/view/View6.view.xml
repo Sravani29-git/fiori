@@ -1,0 +1,81 @@
+<mvc:View
+    controllerName="fragment.controller.View6"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <!-- <Page title="Property Binding Example">
+        <content>
+            <VBox class="sapUiSmallMargin">
+
+                <Label text="Employee Name"/>
+                <Text text="{empModel>/name}" />
+
+                <Label text="Department"/>
+                <Text text="{empModel>/department}" />
+
+                <Label text="Location"/>
+                <Input value="{empModel>/location}" />
+
+            </VBox>
+        </content>
+    </Page> -->
+    <Page>
+    <content>
+            <VBox class="sapUiSmallMargin">
+
+                <Text text="Employee Status"/>
+
+                <Text text="{= ${empModel>/active} ? 'Active Employee' : 'Inactive Employee' }" />
+
+                <Text text="{= ${empModel>/salary} > 50000 ? 'High Salary' : 'Normal Salary' }" />
+
+            </VBox>
+        </content>
+        </Page>
+<!-- <Page title="Element Binding Example">
+        <content>
+
+            <Table
+                id="empTable"
+                items="{empModel>/employees}"
+                itemPress="onEmployeePress">
+
+                <columns>
+                    <Column><Text text="ID"/></Column>
+                    <Column><Text text="Name"/></Column>
+                        <Column><Text text="Department"/></Column>
+                    <Column><Text text="Location"/></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Active">
+                        <cells>
+                            <Text text="{empModel>id}" />
+                            <Text text="{empModel>name}" />
+                            <Text text="{empModel>department}" />
+                            <Text text="{empModel>location}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+            <f:SimpleForm
+                id="employeeForm"
+                title="Selected Employee Details"
+                class="sapUiMediumMarginTop">
+
+                <Label text="Name"/>
+                <Text text="{empModel>name}" />
+
+                <Label text="Department"/>
+                <Text text="{empModel>department}" />
+
+                <Label text="Location"/>
+                <Text text="{empModel>location}" />
+
+            </f:SimpleForm>
+
+        </content>
+    </Page> -->
+</mvc:View>

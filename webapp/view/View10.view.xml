@@ -1,0 +1,21 @@
+<mvc:View
+    controllerName="fragment.controller.View10"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+<VBox>
+ 
+    <Select change="onLanguageChange">
+      <core:Item key="en" text="English"/>
+      <core:Item key="de" text="German"/>
+      <core:Item key="es" text="Spanish"/>
+    </Select>
+ 
+    <Title text="{i18n>title}" />
+    <Input placeholder="{i18n>name}" />
+    <Input placeholder="{i18n>email}" />
+    <Button text="{i18n>submit}" />
+ 
+  </VBox>
+ 
+</mvc:View>

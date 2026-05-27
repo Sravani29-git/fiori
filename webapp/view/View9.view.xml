@@ -1,0 +1,187 @@
+<mvc:View
+    controllerName="fragment.controller.View9"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table="sap.ui.table"
+    xmlns:rowmodes="sap.ui.table.rowmodes">
+
+    <Page
+        showHeader="false"
+        enableScrolling="false"
+        class="sapUiSizeCompact cbPage">
+
+        <content>
+
+            <HBox class="cbTopBar" alignItems="Center" justifyContent="SpaceBetween">
+                <Text text="Welcome : Sriram Varma Dantuluri" class="cbTopText"/>
+                <Text text="System : OTS" class="cbTopText"/>
+                <Text text="Date &amp; Time : Wed, 29/Apr/2026, 05:11:59 PM" class="cbTopText"/>
+            </HBox>
+
+            <Bar class="cbTitleBar">
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" type="Transparent"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Title text="Charge Back Report" level="H4" class="cbTitle"/>
+                </contentMiddle>
+            </Bar>
+
+            <VBox class="cbFilterArea">
+                <HBox class="cbFilterRow" alignItems="End" justifyContent="SpaceBetween">
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Region:"/>
+                        <ComboBox width="100%"/>
+                    </VBox>
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Business Area:"/>
+                        <ComboBox width="100%"/>
+                    </VBox>
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Office:"/>
+                        <ComboBox width="100%"/>
+                    </VBox>
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Service:"/>
+                        <ComboBox width="100%"/>
+                    </VBox>
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Purchase Order:"/>
+                        <Input width="100%"/>
+                    </VBox>
+
+                    <VBox class="cbFilterBox">
+                        <Label text="Purchase Requisition:"/>
+                        <Input width="100%"/>
+                    </VBox>
+
+                    <HBox class="cbButtonBox" alignItems="End">
+                        <Button text="Clear" type="Transparent"/>
+                        <Button text="Adapt Filters" type="Transparent"/>
+                        <Button text="Go" type="Emphasized"/>
+                    </HBox>
+
+                </HBox>
+            </VBox>
+
+            <OverflowToolbar class="cbToolBar">
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://download" type="Emphasized"/>
+                <Button icon="sap-icon://action-settings" type="Emphasized"/>
+            </OverflowToolbar>
+
+            <table:Table
+                id="tblChargeBackReport"
+                rows="{chargeBackModel>/items}"
+                selectionMode="None"
+                columnHeaderHeight="82"
+                alternateRowColors="false"
+                enableBusyIndicator="true"
+                width="100%"
+                class="cbReportTable">
+
+                <table:rowMode>
+                    <rowmodes:Fixed rowCount="11" rowContentHeight="44"/>
+                </table:rowMode>
+
+                <table:columns>
+
+                    <table:Column width="12%">
+                        <Label text="Office" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>office}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="12%">
+                        <Label text="Order" design="Bold"/>
+                        <table:template>
+                            <HBox alignItems="Center">
+                                <Text
+                                    text="{chargeBackModel>order}"
+                                    class="{= ${chargeBackModel>isTotal} ? 'cbTotalText' : '' }"/>
+                                <Button
+                                    icon="sap-icon://inspect"
+                                    type="Transparent"
+                                    class="cbInspectBtn"
+                                    visible="{= !${chargeBackModel>isTotal} &amp;&amp; !!${chargeBackModel>order} }"/>
+                            </HBox>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="10%">
+                        <Label text="Order Item Amount" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>orderItemAmount}" textAlign="End"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="7%">
+                        <Label text="Order&#10;Quantity" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>orderQuantity}" textAlign="End"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="7%">
+                        <Label text="Status" design="Bold"/>
+                        <table:template>
+                            <ObjectStatus
+                                text="{chargeBackModel>status}"
+                                state="{= ${chargeBackModel>status} === 'Accepted' ? 'Success' : ${chargeBackModel>status} === 'Rejected' ? 'Error' : ${chargeBackModel>status} === 'Processed' ? 'Warning' : 'None' }"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="12%">
+                        <Label text="DFR" design="Bold"/>
+                        <table:template>
+                            <Link text="{chargeBackModel>dfr}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="9%">
+                        <Label text="PRQ Difference" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>prqDifference}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="8%">
+                        <Label text="PO Difference" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>poDifference}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="8%">
+                        <Label text="Grant" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>grant}"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="5%">
+                        <Label text="Grant&#10;Exp.&#10;Days" design="Bold"/>
+                        <table:template>
+                            <ObjectStatus text="{chargeBackModel>grantExpDays}" state="Success"/>
+                        </table:template>
+                    </table:Column>
+
+                    <table:Column width="10%">
+                        <Label text="Funds Commitment" design="Bold"/>
+                        <table:template>
+                            <Text text="{chargeBackModel>fundsCommitment}"/>
+                        </table:template>
+                    </table:Column>
+
+                </table:columns>
+            </table:Table>
+
+        </content>
+    </Page>
+</mvc:View>

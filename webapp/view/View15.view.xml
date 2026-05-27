@@ -1,0 +1,45 @@
+<mvc:View
+    controllerName="fragment.controller.View15"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Employee Master">
+
+        <content>
+            <Table
+                id="idEmpTable"
+                items="{empModel>/employees}"
+                mode="SingleSelectMaster"
+                itemPress="onEmployeePress">
+
+                <columns>
+                    <Column>
+                        <Text text="Employee ID"/>
+                    </Column>
+                    <Column>
+                        <Text text="Name"/>
+                    </Column>
+                    <Column>
+                        <Text text="Department"/>
+                    </Column>
+                    <Column>
+                        <Text text="Salary"/>
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Navigation">
+                        <cells>
+                            <Text text="{empModel>empId}"/>
+                            <Text text="{empModel>name}"/>
+                            <Text text="{empModel>department}"/>
+                            <Text text="{empModel>salary}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+
+    </Page>
+</mvc:View>

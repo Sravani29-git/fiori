@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <Dialog title="Address Details" contentWidth="450px">
+        <content>
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout"
+                class="sapUiMediumMargin">
+
+                <Label text="Street"/>
+                <Text text="{empModel>/address/street}"/>
+
+                <Label text="City"/>
+                <Text text="{empModel>/address/city}"/>
+
+                <Label text="State"/>
+                <Text text="{empModel>/address/state}"/>
+
+                <Label text="Country"/>
+                <Text text="{empModel>/address/country}"/>
+
+                <Label text="Postal Code"/>
+                <Text text="{empModel>/address/postalCode}"/>
+
+            </f:SimpleForm>
+        </content>
+
+        <endButton>
+            <Button text="Close" press="onClose"/>
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

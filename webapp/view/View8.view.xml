@@ -1,0 +1,247 @@
+<mvc:View
+    controllerName="fragment.controller.View8"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <Page title="Customer Contract Creation">
+
+        <content>
+
+            <IconTabBar
+                id="idMainTabBarView8"
+                expandable="false"
+                class="sapUiResponsiveContentPadding">
+
+                <items>
+
+                    <!-- ================================================= -->
+                    <!-- EMPLOYEE DETAILS -->
+                    <!-- ================================================= -->
+
+                    <IconTabFilter
+                        key="EMP"
+                        text="Employee Details"
+                        icon="sap-icon://employee">
+
+                        <VBox class="sapUiSmallMargin">
+
+                            <Toolbar>
+                                <Title text="Employee CRUD Operations"/>
+                                <ToolbarSpacer/>
+
+                                <Button
+                                    text="Add"
+                                    icon="sap-icon://add"
+                                    type="Emphasized"
+                                    press="onAdd"/>
+
+                                <Button
+                                    text="Edit"
+                                    icon="sap-icon://edit"
+                                    type="Attention"
+                                    press="onEdit"/>
+
+                                <Button
+                                    text="Delete"
+                                    icon="sap-icon://delete"
+                                    type="Reject"
+                                    press="onDelete"/>
+
+                                <Button
+                                    text="Refresh"
+                                    icon="sap-icon://refresh"
+                                    press="onRefresh"/>
+                            </Toolbar>
+
+                            <Table
+                                id="idEmpTableView8"
+                                mode="SingleSelectLeft"
+                                growing="true"
+                                growingThreshold="5"
+                                items="{empModel>/employees}">
+
+                                <columns>
+
+                                    <Column>
+                                        <Text text="Employee ID"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Name"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Location"/>
+                                    </Column>
+
+                                    <Column>
+                                        <Text text="Designation"/>
+                                    </Column>
+
+                                </columns>
+
+                                <items>
+
+                                    <ColumnListItem>
+
+                                        <cells>
+
+                                            <Input
+                                                value="{empModel>EMPID}"
+                                                editable="{empModel>Editable}"/>
+
+                                            <Input
+                                                value="{empModel>NAME}"
+                                                editable="{empModel>Editable}"/>
+
+                                            <Input
+                                                value="{empModel>LOCATION}"
+                                                editable="{empModel>Editable}"/>
+
+                                            <Input
+                                                value="{empModel>DESIGNATION}"
+                                                editable="{empModel>Editable}"/>
+
+                                        </cells>
+
+                                    </ColumnListItem>
+
+                                </items>
+
+                            </Table>
+
+                            <Toolbar visible="{empModel>/showSave}">
+
+                                <ToolbarSpacer/>
+
+                                <Button
+                                    text="Clear"
+                                    type="Reject"
+                                    press="onClear"/>
+
+                                <Button
+                                    text="Save"
+                                    type="Accept"
+                                    press="onSave"/>
+
+                            </Toolbar>
+
+                        </VBox>
+
+                    </IconTabFilter>
+
+                    <!-- ================================================= -->
+                    <!-- PRODUCTS -->
+                    <!-- ================================================= -->
+
+                    <IconTabFilter
+                        key="PRODUCTS"
+                        text="Products"
+                        icon="sap-icon://product">
+
+                        <Table
+                            id="idProductsTableView8"
+                            growing="true"
+                            growingThreshold="10"
+                            inset="false"
+                            items="{
+                                path:'northwind>/Products',
+                                parameters:{
+                                    expand:'Supplier'
+                                }
+                            }">
+
+                            <columns>
+
+                                <Column>
+                                    <Text text="Product ID"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="Product Name"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="Unit Price"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="Supplier Name"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="Supplier City"/>
+                                </Column>
+
+                                <Column>
+                                    <Text text="Supplier Country"/>
+                                </Column>
+
+                            </columns>
+
+                            <items>
+
+                                <ColumnListItem>
+
+                                    <cells>
+
+                                        <Text text="{northwind>ProductID}"/>
+
+                                        <Text text="{northwind>ProductName}"/>
+
+                                        <Text text="{northwind>UnitPrice}"/>
+
+                                        <Text text="{northwind>Supplier/CompanyName}"/>
+
+                                        <Text text="{northwind>Supplier/City}"/>
+
+                                        <Text text="{northwind>Supplier/Country}"/>
+
+                                    </cells>
+
+                                </ColumnListItem>
+
+                            </items>
+
+                        </Table>
+
+                    </IconTabFilter>
+
+                    <!-- ================================================= -->
+                    <!-- ORDERS -->
+                    <!-- ================================================= -->
+
+                    <IconTabFilter
+                        key="ORDERS"
+                        text="Orders"
+                        icon="sap-icon://sales-order">
+
+                        <List
+                            id="idOrdersListView8"
+                            growing="true"
+                            growingThreshold="10"
+                            items="{northwind>/Orders}">
+
+                            <items>
+
+                                <StandardListItem
+                                    title="Order ID: {northwind>OrderID}"
+                                    description="Customer ID: {northwind>CustomerID}"
+                                    info="{northwind>ShipCountry}"
+                                    infoState="Success"/>
+
+                            </items>
+
+                        </List>
+
+                    </IconTabFilter>
+
+                </items>
+
+            </IconTabBar>
+
+        </content>
+
+    </Page>
+
+</mvc:View>

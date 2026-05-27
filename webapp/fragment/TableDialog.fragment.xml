@@ -1,0 +1,41 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+
+    <Dialog title="Employee Details" contentWidth="600px">
+
+        <Table items="{empModel>/employees}">
+
+            <columns>
+                <Column>
+                    <Text text="ID"/>
+                </Column>
+
+                <Column>
+                    <Text text="Name"/>
+                </Column>
+
+                <Column>
+                    <Text text="Role"/>
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Text text="{empModel>id}"/>
+                        <Text text="{empModel>name}"/>
+                        <Text text="{empModel>role}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+
+        </Table>
+
+        <endButton>
+            <Button text="Close" press="onCloseDialog"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>
